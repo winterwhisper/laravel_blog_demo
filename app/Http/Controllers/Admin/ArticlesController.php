@@ -16,8 +16,8 @@ class ArticlesController extends Controller {
 	 */
 	public function index()
 	{
-		$articles = Article::all()->orderBy('id', 'desc');
-		return view('admin.articles.index')->withArticles();
+		$articles = Article::orderBy('id', 'DESC')->paginate(15);
+		return view('admin.articles.index')->withArticles($articles);
 	}
 
 	/**

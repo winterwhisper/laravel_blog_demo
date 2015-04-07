@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-  <title>Console</title>
+  <title>@yield('page_title') | Console</title>
   <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('assets/css/font-awesome.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('assets/css/ionicons.min.css') }}">
@@ -21,7 +21,6 @@
     @include('partials.admin.top_bar')
     @include('partials.admin.side_bar')
     <div class="content-wrapper">
-      {{-- @include('partials.admin.content_header') --}}
       <section class="content">
         @yield('content')
       </section>

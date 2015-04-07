@@ -1,6 +1,9 @@
 <header class="main-header">
   <a href="../../index2.html" class="logo">Console Dashboard</a>
   <nav class="navbar navbar-static-top" role="navigation">
+    <ul class="breadcrumb pull-left">
+      @yield('content_header_breadcrumb')
+    </ul>
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
         <li class="dropdown user user-menu">
