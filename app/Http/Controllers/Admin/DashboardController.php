@@ -9,7 +9,8 @@ class DashboardController extends Controller {
 
   public function home()
   {
-    return view('admin.dashboard.home');
+    $dashboard_actived = true;
+    return view('admin.dashboard.home')->withDashboardActived($dashboard_actived);
   }
 
 }

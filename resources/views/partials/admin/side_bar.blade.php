@@ -10,26 +10,26 @@
     </form>
     <ul class="sidebar-menu">
       <li class="header">主导航</li>
-      <li><a href="{{ URL('console') }}"><i class="fa fa-dashboard"></i> 仪表盘</a></li>
-      <li class="treeview active">
+      <li class="{{!empty($dashboard_actived) ? 'active' : ''}}"><a href="{{ URL('console') }}"><i class="fa fa-dashboard"></i> 仪表盘</a></li>
+      <li class="treeview {{!empty($articles_actived) ? 'active' : ''}}">
         <a href="javascript:;">
           <i class="fa fa-files-o"></i>
           <span>文章</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li class="active"><a href="{{ URL('console/articles') }}"><i class="fa fa-circle-o"></i> 所有文章</a></li>
-          <li><a href="{{ URL('console/articles/create') }}"><i class="fa fa-circle-o"></i> 新增文章</a></li>
+          <li class="{{!empty($articles_index_actived) ? 'active' : ''}}"><a href="{{ URL('console/articles') }}"><i class="fa fa-circle-o"></i> 所有文章</a></li>
+          <li class="{{!empty($articles_create_actived) ? 'active' : ''}}"><a href="{{ URL('console/articles/create') }}"><i class="fa fa-circle-o"></i> 新增文章</a></li>
         </ul>
       </li>
-      <li>
+      <li class="{{!empty($comments_actived) ? 'active' : ''}}">
         <a href="{{ URL('console/comments') }}">
           <i class="fa fa-pie-chart"></i>
           <span>评论</span>
           <span class="label label-primary pull-right">4</span>
         </a>
       </li>
-      <li><a href="{{ URL('console/users') }}"><i class="fa fa-user"></i><span> 用户</span></a>
+      <li class="{{!empty($users_actived) ? 'active' : ''}}"><a href="{{ URL('console/users') }}"><i class="fa fa-user"></i><span> 用户</span></a>
       </li>
       <li class="header">标签</li>
       <li><a href="javascript:;"><i class="fa fa-circle-o text-danger"></i> Ruby</a></li>

@@ -9,5 +9,5 @@
 @stop
 
 @section('content_header_breadcrumb')
-<li><a href="{{ URL('console/articles') }}"><i class="fa fa-pie-chart"></i> 用户</a></li>
+<li><a href="{{ URL('console/users') }}"><i class="fa fa-pie-chart"></i> 用户</a></li>
 @stop

@@ -14,7 +14,8 @@ class CommentsController extends Controller {
 	 */
 	public function index()
 	{
-		return view('admin.comments.index');
+		$comments_actived = true;
+		return view('admin.comments.index')->withCommentsActived($comments_actived);
 	}
 
 	/**

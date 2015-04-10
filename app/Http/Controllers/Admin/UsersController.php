@@ -14,7 +14,8 @@ class UsersController extends Controller {
 	 */
 	public function index()
 	{
-		return view('admin.users.index');
+		$users_actived = true;
+		return view('admin.users.index')->withUsersActived($users_actived);
 	}
 
 	/**

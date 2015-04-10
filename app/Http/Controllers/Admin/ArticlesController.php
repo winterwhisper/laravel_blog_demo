@@ -17,7 +17,11 @@ class ArticlesController extends Controller {
 	public function index()
 	{
 		$articles = Article::orderBy('id', 'DESC')->paginate(15);
-		return view('admin.articles.index')->withArticles($articles);
+		$articles_actived = true;
+		$articles_index_actived = true;
+		return view('admin.articles.index')->withArticles($articles)
+																			 ->withArticlesActived($articles_actived)
+																			 ->withArticlesIndexActived($articles_index_actived);
 	}
 
 	/**
@@ -27,7 +31,10 @@ class ArticlesController extends Controller {
 	 */
 	public function create()
 	{
-		return view('admin.articles.create');
+		$articles_actived = true;
+		$articles_create_actived = true;
+		return view('admin.articles.create')->withArticlesActived($articles_actived)
+																				->withArticlesCreateActived($articles_create_actived);;
 	}
 
 	/**
