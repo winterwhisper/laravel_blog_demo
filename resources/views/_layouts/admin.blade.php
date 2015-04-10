@@ -18,14 +18,14 @@
 </head>
 <body class="skin-blue">
   <div class="wrapper">
-    @include('partials.admin.top_bar')
-    @include('partials.admin.side_bar')
+    @include('partials.layouts.admin.top_bar')
+    @include('partials.layouts.admin.side_bar')
     <div class="content-wrapper">
       <section class="content">
         @yield('content')
       </section>
     </div>
-    @include('partials.admin.footer')
+    @include('partials.layouts.admin.footer')
   </div>
   <script src="{{ URL::asset('assets/javascript/jquery.min.js') }}"></script>
   <script src="{{ URL::asset('assets/javascript/bootstrap.min.js') }}"></script>
