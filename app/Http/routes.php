@@ -24,4 +24,6 @@ Route::group(['prefix' => 'console', 'namespace' => 'Admin'], function()
 {
   Route::get('/', 'DashBoardController@Home');
   Route::resource('articles', 'ArticlesController');
+  Route::resource('comments', 'CommentsController');
+  Route::resource('users', 'UsersController');
 });

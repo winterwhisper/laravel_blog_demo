@@ -10,7 +10,7 @@
     </form>
     <ul class="sidebar-menu">
       <li class="header">主导航</li>
-      <li><a href="javascript:;"><i class="fa fa-dashboard"></i> 仪表盘</a></li>
+      <li><a href="{{ URL('console') }}"><i class="fa fa-dashboard"></i> 仪表盘</a></li>
       <li class="treeview active">
         <a href="javascript:;">
           <i class="fa fa-files-o"></i>
@@ -23,13 +23,13 @@
         </ul>
       </li>
       <li>
-        <a href="javascript:;">
+        <a href="{{ URL('console/comments') }}">
           <i class="fa fa-pie-chart"></i>
           <span>评论</span>
           <span class="label label-primary pull-right">4</span>
         </a>
       </li>
-      <li><a href="javascript:;"><i class="fa fa-user"></i><span> 用户</span></a>
+      <li><a href="{{ URL('console/users') }}"><i class="fa fa-user"></i><span> 用户</span></a>
       </li>
       <li class="header">标签</li>
       <li><a href="javascript:;"><i class="fa fa-circle-o text-danger"></i> Ruby</a></li>

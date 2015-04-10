@@ -9,6 +9,5 @@
 @stop
 
 @section('content_header_breadcrumb')
-<li><a href="javasript:;"><i class="fa fa-files-o"></i> 文章</a></li>
-<li><a href="javasript:;">所有文章</a></li>
+<li><a href="{{ URL('console') }}"><i class="fa fa-dashboard"></i> 仪表盘</a></li>
 @stop
