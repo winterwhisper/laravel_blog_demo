@@ -23,7 +23,8 @@
 Route::group(['prefix' => 'console', 'namespace' => 'Admin'], function()
 {
   Route::get('/', 'DashBoardController@Home');
-  Route::resource('articles', 'ArticlesController');
+  Route::resource('articles', 'ArticlesController',
+                  ['except' => ['show']]);
   Route::resource('comments', 'CommentsController');
   Route::resource('users', 'UsersController');
 });

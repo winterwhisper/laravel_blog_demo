@@ -2,6 +2,8 @@
 
 use App\Http\Requests\Request;
 
+use App\Article;
+
 class StoreArticleRequest extends Request {
 
 	/**
@@ -21,10 +23,30 @@ class StoreArticleRequest extends Request {
 	 */
 	public function rules()
 	{
-		return [
-			'title' => 'required|unique:articles|max:255',
-      'body' => 'required'
-		];
+		$article = Article::find($this->article);
+		switch ($this->method()) {
+			case 'GET':
+			case 'DELETE':
+			{
+				return [];
+			}
+			case 'POST':
+			{
+				return [
+					'article.title' => 'required|unique:articles|max:255',
+		      'article.body' => 'required'
+				];
+			}
+			case 'PUT':
+			case 'PATCH':
+			{
+				return [
+					'article.title' => 'required|unique:articles,title,'.$article->id.'|max:255',
+		      'article.body' => 'required'
+				];
+			}
+			default: break;
+		}
 	}
 
 }
