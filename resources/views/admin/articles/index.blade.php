@@ -35,7 +35,11 @@
             <td>{{ $article->created_at }}</td>
             <td>
               <a href="{{URL('console/articles/'.$article->id.'/edit')}}">编辑</a>
-              <a href="javascript:;">删除</a>
+              <form action="{{ URL('console/articles/'.$article->id) }}" method="POST" style="display: inline;">
+                <input name="_method" type="hidden" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <a href="javascript:;" data-method="delete" data-confirm="确定要删除吗？">删除</a>
+              </form>
             </td>
           </tr>
         @endforeach
@@ -46,4 +50,20 @@
     {!! $articles->render() !!}
   </div>
 </div>
+@stop
+
+@section('page_js')
+<script>
+  $("[data-confirm]").click(function(){
+    if (confirm($(this).data('confirm'))) {
+      return true;
+    } else {
+      this.stopPropagation();
+    }
+  });
+
+  $("[data-method='delete']").click(function(){
+    $(this).parents("form").submit();
+  });
+</script>
 @stop

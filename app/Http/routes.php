@@ -16,15 +16,14 @@
 // Route::get('home', 'HomeController@index');
 
 // Route::controllers([
-// 	'auth' => 'Auth\AuthController',
-// 	'password' => 'Auth\PasswordController',
+//  'auth' => 'Auth\AuthController',
+//  'password' => 'Auth\PasswordController',
 // ]);
 
-Route::group(['prefix' => 'console', 'namespace' => 'Admin'], function()
-{
+Route::group(['prefix' => 'console', 'namespace' => 'Admin'], function () {
   Route::get('/', 'DashBoardController@Home');
   Route::resource('articles', 'ArticlesController',
-                  ['except' => ['show']]);
+      ['except' => ['show']]);
   Route::resource('comments', 'CommentsController');
   Route::resource('users', 'UsersController');
 });

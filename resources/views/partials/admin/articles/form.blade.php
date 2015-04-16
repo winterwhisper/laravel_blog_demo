@@ -1,4 +1,7 @@
-<form class="form-horizontal" action="{{ URL('console/articles') }}" method="POST">
+<form class="form-horizontal" action="{{ isset($article) ? URL('console/articles/'.$article->id) : URL('console/articles') }}" method="POST">
+  @if (isset($article))
+    <input name="_method" type="hidden" value="PUT">
+  @endif
   @unless (empty($errors->first()))
     <p class="alert alert-danger">表单存在错误</p>
   @endunless
