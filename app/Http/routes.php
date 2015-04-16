@@ -24,6 +24,13 @@ Route::group(['prefix' => 'console', 'namespace' => 'Admin'], function () {
   Route::get('/', 'DashBoardController@Home');
   Route::resource('articles', 'ArticlesController',
       ['except' => ['show']]);
-  Route::resource('comments', 'CommentsController');
+  Route::resource('comments', 'CommentsController',
+      ['only' => ['index', 'destroy']]);
   Route::resource('users', 'UsersController');
 });
+
+//// Display all SQL executed in Eloquent
+//Event::listen('illuminate.query', function($query)
+//{
+//  var_dump($query);
+//});

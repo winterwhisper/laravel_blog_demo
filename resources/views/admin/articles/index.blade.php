@@ -54,19 +54,3 @@
   </div>
 </div>
 @stop
-
-@section('page_js')
-<script>
-  $("[data-confirm]").click(function(){
-    if (confirm($(this).data('confirm'))) {
-      return true;
-    } else {
-      this.stopPropagation();
-    }
-  });
-
-  $("[data-method='delete']").click(function(){
-    $(this).parents("form").submit();
-  });
-</script>
-@stop

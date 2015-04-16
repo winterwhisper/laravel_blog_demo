@@ -5,81 +5,34 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use App\Comment;
+
 class CommentsController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		$comments_actived = true;
-		return view('admin.comments.index')->withCommentsActived($comments_actived);
-	}
+  /**
+   * Display a listing of the resource.
+   *
+   * @return Response
+   */
+  public function index()
+  {
+    $comments_actived = true;
+    $comments = Comment::with('article')->orderBy('id', 'DESC')->paginate(15);
+    return view('admin.comments.index')->withCommentsActived($comments_actived)
+        ->withComments($comments);
+  }
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
+  /**
+   * Remove the specified resource from storage.
+   *
+   * @param  int $id
+   * @return Response
+   */
+  public function destroy($id)
+  {
+    $comment = Comment::find($id);
+    $comment->delete();
+    return redirect('console/comments')->with('success', '删除成功');
+  }
 
 }

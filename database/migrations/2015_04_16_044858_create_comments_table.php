@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTagsTable extends Migration
+class CreateCommentsTable extends Migration
 {
 
   /**
@@ -13,9 +13,14 @@ class CreateTagsTable extends Migration
    */
   public function up()
   {
-    Schema::create('tags', function (Blueprint $table) {
+    Schema::create('comments', function (Blueprint $table) {
       $table->increments('id');
-      $table->string('value');
+      $table->string('name');
+      $table->string('email');
+      $table->text('body');
+      $table->integer('article_id');
+      $table->integer('user_id');
+      $table->softDeletes();
       $table->timestamps();
     });
   }
@@ -27,7 +32,7 @@ class CreateTagsTable extends Migration
    */
   public function down()
   {
-    Schema::drop('tags');
+    Schema::drop('comments');
   }
 
 }

@@ -32,6 +32,7 @@
   <script src="{{ URL::asset('assets/javascript/jquery.slimscroll.min.js') }}"></script>
   <script src="{{ URL::asset('assets/javascript/fastclick.min.js') }}"></script>
   <script src="{{ URL::asset('assets/javascript/AdminLTE.min.js') }}"></script>
+  <script src="{{ URL::asset('assets/javascript/admin_common.js') }}"></script>
   @yield('page_js')
 </body>
 </html>
