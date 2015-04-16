@@ -3,7 +3,10 @@
     <input name="_method" type="hidden" value="PUT">
   @endif
   @unless (empty($errors->first()))
-    <p class="alert alert-danger">表单存在错误</p>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        表单存在错误
+      </div>
   @endunless
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
   <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
