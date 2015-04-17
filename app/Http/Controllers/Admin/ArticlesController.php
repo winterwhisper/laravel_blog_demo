@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreArticleRequest;
 
 use App\Article;
+use App\Tag;
 
-use Request;
+//use Illuminate\Support\Facades\DB;
+use Request, DB;
 
 class ArticlesController extends Controller
 {
@@ -32,10 +34,30 @@ class ArticlesController extends Controller
 
   public function store(StoreArticleRequest $request)
   {
+    if ($request->has('article.tags_attributes.value')) {
+      $tags_value = $request->input('article.tags_attributes.value');
+      $splited_tags_value = explode(',', $tags_value);
+
+      if (count($splited_tags_value) > 0) {
+        $tags = [];
+        foreach(@$splited_tags_value as $tag_value) {
+          $tags[] = Tag::firstOrCreate(['value' => trim($tag_value)]);
+        }
+      }
+    }
+
     $article = new Article($request->input('article'));
-    if ($article->save()) {
+
+//    DB::beginTransaction();
+    $article_result = $article->save();
+    $tags_result = $article->tags()->attach($tags);
+
+    if ($article_result && $tags_result) {
+//    if (count($tags) > 0 ? $article->tags()->sync($comments)->save() : $article->save()) {
+//      DB::commitTransaction();
       return redirect('console/articles')->with('success', '发布成功');
     } else {
+//      DB::rollbackTransaction();
       return redirect()->back()->withInput();
     }
   }

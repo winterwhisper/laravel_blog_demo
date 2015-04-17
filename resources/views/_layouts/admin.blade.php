@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="{{ URL::asset('assets/css/ionicons.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('assets/css/AdminLTE.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('assets/css/skin-blue.min.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap-tokenfield.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('assets/css/global.css') }}">
   <!--[if lt IE 9]>
     <script src="{{ URL::asset('assets/javascript/html5shiv.min.js') }}</script>
@@ -33,6 +34,7 @@
   <script src="{{ URL::asset('assets/javascript/fastclick.min.js') }}"></script>
   <script src="{{ URL::asset('assets/javascript/AdminLTE.min.js') }}"></script>
   <script src="{{ URL::asset('assets/javascript/admin_common.js') }}"></script>
+  <script src="{{ URL::asset('assets/javascript/bootstrap-tokenfield.min.js') }}"></script>
   @yield('page_js')
 </body>
 </html>

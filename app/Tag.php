@@ -4,14 +4,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model {
 
-  public function article_tags()
-  {
-    return $this->hasMany('App\ArticleTag');
-  }
+  protected $fillable = ['value'];
 
-  public function articles()
-  {
-    return $this->hasManyThrough('App\Article', 'ArticleTag');
-  }
+//  public function article_tags()
+//  {
+//    return $this->hasMany('App\ArticleTag');
+//  }
+//
+//  public function articles()
+//  {
+//    return $this->hasManyThrough('App\Article', 'ArticleTag');
+//  }
 
 }

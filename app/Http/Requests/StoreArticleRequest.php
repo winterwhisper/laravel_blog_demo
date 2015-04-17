@@ -33,14 +33,16 @@ class StoreArticleRequest extends Request
       case 'POST': {
         return [
           'article.title' => 'required|unique:articles,title|max:255',
-          'article.body' => 'required'
+          'article.body' => 'required',
+          'article.tags_attributes.value' => 'sometimes|max:255'
         ];
       }
       case 'PUT':
       case 'PATCH': {
         return [
           'article.title' => 'required|unique:articles,title,'.Route::input('articles').'|max:255',
-          'article.body' => 'required'
+          'article.body' => 'required',
+          'article.tags_attributes.value' => 'sometimes|max:255'
         ];
       }
       default:
