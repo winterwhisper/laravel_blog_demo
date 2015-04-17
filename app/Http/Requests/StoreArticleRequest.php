@@ -32,7 +32,7 @@ class StoreArticleRequest extends Request
       }
       case 'POST': {
         return [
-          'article.title' => 'required|unique:articles|max:255',
+          'article.title' => 'required|unique:articles,title|max:255',
           'article.body' => 'required'
         ];
       }
@@ -46,6 +46,7 @@ class StoreArticleRequest extends Request
       default:
         break;
     }
+    return [];
   }
 
 }
