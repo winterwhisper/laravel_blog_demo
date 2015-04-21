@@ -1,4 +1,4 @@
-@extends('_layouts.admin')
+@extends('layouts.admin')
 
 @section('page_title')
 编辑文章
@@ -15,7 +15,9 @@
     <h3 class="box-title">编辑文章</h3>
   </div>
   <div class="box-body">
-    @include('partials.admin.articles.form')
+    {!! Form::model($article, ['method' => 'PATCH', 'url' => URL('console/articles/'.$article->id), 'class' => 'form-horizontal']) !!}
+      @include('admin.articles._form', ['submit_btn_text' => '更新'])
+    {!! Form::close() !!}
   </div>
 </div>
 @stop

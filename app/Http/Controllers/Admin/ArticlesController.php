@@ -8,28 +8,26 @@ use App\Http\Requests\StoreArticleRequest;
 use App\Article;
 use App\Tag;
 
-//use Illuminate\Support\Facades\DB;
 use Request, DB;
 
 class ArticlesController extends Controller
 {
-
+  
   public function index()
   {
     $articles_actived = true;
     $articles_index_actived = true;
     $articles = Article::orderBy('id', 'DESC')->paginate(15);
-    return view('admin.articles.index')->withArticles($articles)
-        ->withArticlesActived($articles_actived)
-        ->withArticlesIndexActived($articles_index_actived);
+
+    return view('admin.articles.index', compact('articles_actived', 'articles_index_actived', 'articles'));
   }
 
   public function create()
   {
     $articles_actived = true;
     $articles_create_actived = true;
-    return view('admin.articles.create')->withArticlesActived($articles_actived)
-        ->withArticlesCreateActived($articles_create_actived);;
+
+    return view('admin.articles.create', compact('articles_actived', 'articles_create_actived');
   }
 
   public function store(StoreArticleRequest $request)
@@ -65,8 +63,9 @@ class ArticlesController extends Controller
   public function edit($id)
   {
     $articles_actived = true;
-    return view('admin.articles.edit')->withArticle(Article::find($id))
-        ->withArticlesActived($articles_actived);
+    $article = Article::find($id);
+
+    return view('admin.articles.edit', compact('articles_actived', 'article'));
   }
 
   public function update(StoreArticleRequest $request, $id)

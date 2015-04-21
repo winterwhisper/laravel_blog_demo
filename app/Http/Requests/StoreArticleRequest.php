@@ -25,30 +25,27 @@ class StoreArticleRequest extends Request
    */
   public function rules()
   {
+    $rule = [
+      'article.body' => 'required',
+      'article.tags_attributes.value' => 'sometimes|max:255'
+    ];
+
     switch ($this->method()) {
       case 'GET':
       case 'DELETE': {
-        return [];
+        $rule = [];
       }
       case 'POST': {
-        return [
-          'article.title' => 'required|unique:articles,title|max:255',
-          'article.body' => 'required',
-          'article.tags_attributes.value' => 'sometimes|max:255'
-        ];
+        $rule['article.title'] = 'required|unique:articles,title|max:255';
       }
       case 'PUT':
       case 'PATCH': {
-        return [
-          'article.title' => 'required|unique:articles,title,'.Route::input('articles').'|max:255',
-          'article.body' => 'required',
-          'article.tags_attributes.value' => 'sometimes|max:255'
-        ];
+        $rule['article.title'] = 'required|unique:articles,title,'.Route::input('articles').'|max:255';
       }
       default:
         break;
     }
-    return [];
+    return $rule;
   }
 
 }

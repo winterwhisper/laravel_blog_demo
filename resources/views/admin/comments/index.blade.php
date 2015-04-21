@@ -1,4 +1,4 @@
-@extends('_layouts.admin')
+@extends('layouts.admin')
 
 @section('page_title')
 评论

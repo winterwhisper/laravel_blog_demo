@@ -1,4 +1,4 @@
-@extends('_layouts.admin')
+@extends('layouts.admin')
 
 @section('page_title')
 新增文章
@@ -15,7 +15,9 @@
     <h3 class="box-title">新增文章</h3>
   </div>
   <div class="box-body">
-    @include('partials.admin.articles.form')
+    {!! Form::open(['url' => URL('console/articles'), 'class' => 'form-horizontal']) !!}
+    @include('admin.articles._form', ['submit_btn_text' => '发布'])
+    {!! Form::close() !!}
   </div>
 </div>
 @stop
