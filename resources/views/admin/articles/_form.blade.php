@@ -21,11 +21,13 @@
   </div>
 </div>
 
-<div class="form-group {{ $errors->has('tags') ? 'has-error' : '' }}">
-  {!! Form::label('tags', '标签:', ['class' => 'col-sm-2 control-label']) !!}
+  {{--{{ dd($errors) }}--}}
+
+<div class="form-group {{ $errors->has('tags_list') ? 'has-error' : '' }}">
+  {!! Form::label('tags_list', '标签:', ['class' => 'col-sm-2 control-label']) !!}
   <div class="col-sm-8">
-    {!! Form::text('tags', null, ['class' => 'form-control', 'placeholder' => "请输入标签，用逗号或者回车间隔"]) !!}
-    {!! $errors->first('tags', '<p class="help-block">:message</p>') !!}
+    {!! Form::text('tags_list', null, ['class' => 'form-control', 'placeholder' => "请输入标签，用逗号或者回车间隔"]) !!}
+    {!! $errors->first('tags_list', '<p class="help-block">:message</p>') !!}
   </div>
 </div>
 
@@ -36,8 +38,10 @@
 </div>
 
 @section('page_js')
+  <link rel="stylesheet" href="{{ URL::asset('css/vendor/bootstrap-tokenfield.min.css') }}">
+  <script src="{{ URL::asset('js/vendor/bootstrap-tokenfield.min.js') }}"></script>
   <script>
-    $('#article_tags_attributes_value').tokenfield({
+    $('#tags_list').tokenfield({
       showAutocompleteOnFocus: true
     })
   </script>

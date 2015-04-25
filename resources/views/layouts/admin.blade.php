@@ -5,16 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   <title>@yield('page_title') | Console</title>
-  <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('assets/css/font-awesome.min.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('assets/css/ionicons.min.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('assets/css/AdminLTE.min.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('assets/css/skin-blue.min.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap-tokenfield.min.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('assets/css/global.css') }}">
+  <link rel="stylesheet" href="{{ elixir('css/admin.css') }}">
   <!--[if lt IE 9]>
-    <script src="{{ URL::asset('assets/javascript/html5shiv.min.js') }}</script>
-    <script src="{{ URL::asset('assets/javascript/respond.js') }}"></script>
+    <script src="{{ URL::asset('js/html5shiv.min.js') }}</script>
+    <script src="{{ URL::asset('js/respond.js') }}"></script>
   <![endif]-->
 </head>
 <body class="skin-blue">
@@ -28,13 +22,7 @@
     </div>
     @include('layouts.admin.footer')
   </div>
-  <script src="{{ URL::asset('assets/javascript/jquery.min.js') }}"></script>
-  <script src="{{ URL::asset('assets/javascript/bootstrap.min.js') }}"></script>
-  <script src="{{ URL::asset('assets/javascript/jquery.slimscroll.min.js') }}"></script>
-  <script src="{{ URL::asset('assets/javascript/fastclick.min.js') }}"></script>
-  <script src="{{ URL::asset('assets/javascript/AdminLTE.min.js') }}"></script>
-  <script src="{{ URL::asset('assets/javascript/admin_common.js') }}"></script>
-  <script src="{{ URL::asset('assets/javascript/bootstrap-tokenfield.min.js') }}"></script>
+  <script src="{{ elixir('js/admin.js') }}"></script>
   @yield('page_js')
 </body>
 </html>

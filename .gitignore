@@ -5,3 +5,4 @@
 .idea
 .sass-cache
 *sublime*
+storage/*.sqlite

@@ -5,7 +5,7 @@ use App\Http\Requests\Request;
 use App\Article;
 use Illuminate\Support\Facades\Route;
 
-class StoreArticleRequest extends Request
+class ArticleRequest extends Request
 {
 
   /**
@@ -26,21 +26,24 @@ class StoreArticleRequest extends Request
   public function rules()
   {
     $rule = [
-      'article.body' => 'required',
-      'article.tags_attributes.value' => 'sometimes|max:255'
+      'body' => 'required',
+      'tags_list' => 'sometimes|max:255'
     ];
 
     switch ($this->method()) {
       case 'GET':
       case 'DELETE': {
         $rule = [];
+        break;
       }
       case 'POST': {
-        $rule['article.title'] = 'required|unique:articles,title|max:255';
+        $rule['title'] = 'required|unique:articles,title|max:255';
+        break;
       }
       case 'PUT':
       case 'PATCH': {
-        $rule['article.title'] = 'required|unique:articles,title,'.Route::input('articles').'|max:255';
+        $rule['title'] = 'required|unique:articles,title,'.Route::input('articles').'|max:255';
+        break;
       }
       default:
         break;

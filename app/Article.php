@@ -6,15 +6,22 @@ class Article extends Model {
 
   protected $fillable = ['title', 'body'];
 
-//  public function article_tags()
-//  {
-//    return $this->hasMany('App\ArticleTag');
-//  }
+  public static function create_article_with_tags(Array $tag_ids) {
+    \DB::transaction(function() use ($tag_ids) {
+      $article = Article::create(\Request::all());
+      if (count($tag_ids) > 0) {
+        $article->tags()->sync($tag_ids);
+      }
+    });
+  }
 
   public function tags()
   {
-//    return $this->hasManyThrough('App\Tag', 'App\ArticleTag');
-    return $this->belongsToMany('App\Tag', 'article_tags');
+    return $this->belongsToMany('App\Tag', 'article_tags')->withTimestamps();
+  }
+
+  public function getTagsListAttribute() {
+    return implode($this->tags->lists('value'));
   }
 
 }
